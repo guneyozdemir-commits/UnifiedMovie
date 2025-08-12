@@ -25,11 +25,14 @@ async function makeRequest(url, retries = 3) {
                     'Accept-Encoding': 'gzip, deflate',
                     'Connection': 'keep-alive',
                     'Upgrade-Insecure-Requests': '1',
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache'
                 },
                 timeout: 10000
             });
             return response;
         } catch (error) {
+            console.error(`Attempt ${i + 1} failed for URL ${url}:`, error.message);
             if (i === retries - 1) throw error;
             await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
         }
@@ -78,38 +81,84 @@ async function scrapeRottenTomatoes(movieTitle) {
 // Scrape Metacritic
 async function scrapeMetacritic(movieTitle) {
     try {
-        const searchUrl = `https://www.metacritic.com/search/${encodeURIComponent(movieTitle)}`;
+        // First try direct movie URL format
+        const formattedTitle = movieTitle.toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-|-$/g, '');
+            
+        const directUrl = `https://www.metacritic.com/movie/${formattedTitle}`;
+        try {
+            const directResponse = await makeRequest(directUrl);
+            const direct$ = cheerio.load(directResponse.data);
+            
+            // Try multiple selector patterns
+            const metascoreSelectors = [
+                '.c-metascore',
+                '.g-inner-rating-value',
+                'span[data-v-12e11c30]',
+                '.metascore_w'
+            ];
+            
+            for (const selector of metascoreSelectors) {
+                const score = direct$(selector).first().text().trim();
+                const parsedScore = parseInt(score);
+                if (!isNaN(parsedScore) && parsedScore >= 0 && parsedScore <= 100) {
+                    console.log(`Found Metacritic score ${parsedScore} for ${movieTitle} using selector ${selector}`);
+                    return parsedScore;
+                }
+            }
+        } catch (error) {
+            console.log(`Direct URL approach failed for ${movieTitle}, trying search...`);
+        }
+
+        // If direct URL fails, try search
+        const searchUrl = `https://www.metacritic.com/search/${encodeURIComponent(movieTitle)}/?category=movie`;
         const response = await makeRequest(searchUrl);
         const $ = cheerio.load(response.data);
         
-        const firstResult = $('.c-pageSiteSearch-results-item').first();
-        if (!firstResult.length) {
-            return null;
-        }
+        // Try multiple search result selectors
+        const searchSelectors = [
+            '.c-pageSiteSearch-results-item',
+            '.search_results .result',
+            '[data-v-12e11c30]'
+        ];
         
-        // Try to get score from search result
-        const scoreText = firstResult.text();
-        const scoreMatch = scoreText.match(/(\d{1,2}|100)/);
-        if (scoreMatch) {
-            const score = parseInt(scoreMatch[1]);
-            if (score >= 0 && score <= 100) {
-                return score;
+        for (const selector of searchSelectors) {
+            const firstResult = $(selector).first();
+            if (firstResult.length) {
+                const scoreText = firstResult.text();
+                const scoreMatches = scoreText.match(/\b([0-9]{1,3})\b/g);
+                
+                if (scoreMatches) {
+                    for (const match of scoreMatches) {
+                        const score = parseInt(match);
+                        if (score >= 0 && score <= 100) {
+                            console.log(`Found Metacritic score ${score} for ${movieTitle} from search results`);
+                            return score;
+                        }
+                    }
+                }
+                
+                // If we found a result but no score, try to get the movie page URL
+                const movieUrl = firstResult.find('a').attr('href');
+                if (movieUrl) {
+                    const movieResponse = await makeRequest(`https://www.metacritic.com${movieUrl}`);
+                    const movie$ = cheerio.load(movieResponse.data);
+                    
+                    for (const selector of metascoreSelectors) {
+                        const score = movie$(selector).first().text().trim();
+                        const parsedScore = parseInt(score);
+                        if (!isNaN(parsedScore) && parsedScore >= 0 && parsedScore <= 100) {
+                            console.log(`Found Metacritic score ${parsedScore} for ${movieTitle} from movie page`);
+                            return parsedScore;
+                        }
+                    }
+                }
             }
         }
         
-        // If no score in search, try movie page
-        const movieUrl = firstResult.find('a').attr('href');
-        if (movieUrl) {
-            const movieResponse = await makeRequest(`https://www.metacritic.com${movieUrl}`);
-            const movie$ = cheerio.load(movieResponse.data);
-            
-            const metaScore = movie$('.metascore_w').first().text().trim();
-            const score = parseInt(metaScore);
-            if (!isNaN(score) && score >= 0 && score <= 100) {
-                return score;
-            }
-        }
-        
+        console.log(`No valid Metacritic score found for ${movieTitle}`);
         return null;
     } catch (error) {
         console.error('Error scraping Metacritic:', error.message);
@@ -171,7 +220,7 @@ exports.handler = async (event, context) => {
 
     try {
         // Extract movie title from path parameter
-        const movieTitle = event.path.split('/').pop();
+        const movieTitle = decodeURIComponent(event.path.split('/').pop());
         if (!movieTitle) {
             return {
                 statusCode: 400,
