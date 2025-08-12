@@ -5,7 +5,9 @@ const axios = require('axios');
 const userAgents = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/91.0.864.59 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0'
 ];
 
 // Helper function to get random user agent
@@ -38,6 +40,21 @@ async function makeRequest(url, retries = 3) {
             await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
         }
     }
+}
+
+// Helper function to clean and compare movie titles
+function normalizeTitle(title) {
+    return title.toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+// Helper function to check if titles match
+function titlesMatch(title1, title2) {
+    const norm1 = normalizeTitle(title1);
+    const norm2 = normalizeTitle(title2);
+    return norm1.includes(norm2) || norm2.includes(norm1);
 }
 
 // Scrape Rotten Tomatoes
@@ -82,8 +99,8 @@ async function scrapeRottenTomatoes(movieTitle) {
 // Scrape Metacritic
 async function scrapeMetacritic(movieTitle) {
     try {
-        // First try the search API
-        const searchUrl = `https://www.metacritic.com/search/${encodeURIComponent(movieTitle)}/?category=movie`;
+        // Try the search page first
+        const searchUrl = `https://www.metacritic.com/search/movie/${encodeURIComponent(movieTitle)}/results`;
         console.log('Trying Metacritic search URL:', searchUrl);
         
         const searchResponse = await makeRequest(searchUrl);
@@ -103,11 +120,9 @@ async function scrapeMetacritic(movieTitle) {
             for (let i = 0; i < results.length; i++) {
                 const result = results.eq(i);
                 const titleElement = result.find('h3, .title, .product_title');
-                const resultTitle = titleElement.text().trim().toLowerCase();
-                const searchTitle = movieTitle.toLowerCase();
+                const resultTitle = titleElement.text().trim();
                 
-                // Check if this is the movie we're looking for
-                if (resultTitle.includes(searchTitle) || searchTitle.includes(resultTitle)) {
+                if (titlesMatch(resultTitle, movieTitle)) {
                     // Try to find the score in this result
                     const scoreElement = result.find('.metascore_w, .score, .metascore, [class*="score"], [class*="rating"]');
                     for (let j = 0; j < scoreElement.length; j++) {
@@ -132,7 +147,8 @@ async function scrapeMetacritic(movieTitle) {
                                 '.c-metascore',
                                 '.metascore_w',
                                 '[class*="score"]',
-                                '[class*="rating"]'
+                                '[class*="rating"]',
+                                '.c-siteReviewScore'
                             ];
                             
                             for (const scoreSelector of movieScoreSelectors) {
@@ -170,7 +186,8 @@ async function scrapeMetacritic(movieTitle) {
                 '.c-metascore',
                 '.metascore_w',
                 '[class*="score"]',
-                '[class*="rating"]'
+                '[class*="rating"]',
+                '.c-siteReviewScore'
             ];
             
             for (const selector of directScoreSelectors) {
@@ -199,23 +216,88 @@ async function scrapeMetacritic(movieTitle) {
 // Scrape IMDb
 async function scrapeIMDb(movieTitle) {
     try {
+        // First try the search page
         const searchUrl = `https://www.imdb.com/find?q=${encodeURIComponent(movieTitle)}&s=tt&ttype=ft`;
+        console.log('Trying IMDb search URL:', searchUrl);
+        
         const searchResponse = await makeRequest(searchUrl);
         const $ = cheerio.load(searchResponse.data);
         
-        const firstResult = $('.find-result-item').first();
-        if (firstResult.length === 0) return null;
+        // Try multiple search result selectors
+        const searchSelectors = [
+            '.find-result-item',
+            '.findResult'
+        ];
         
-        const movieUrl = firstResult.find('a').attr('href');
-        if (!movieUrl) return null;
+        let movieUrl = null;
         
+        // Try to find the movie in search results
+        for (const selector of searchSelectors) {
+            const results = $(selector);
+            
+            for (let i = 0; i < results.length; i++) {
+                const result = results.eq(i);
+                const titleElement = result.find('.result_text, .findResult');
+                const resultTitle = titleElement.text().trim();
+                
+                if (titlesMatch(resultTitle, movieTitle)) {
+                    movieUrl = result.find('a').attr('href');
+                    if (movieUrl) break;
+                }
+            }
+            
+            if (movieUrl) break;
+        }
+        
+        if (!movieUrl) {
+            console.log('No matching movie found on IMDb');
+            return null;
+        }
+        
+        // Get the movie page
         const movieResponse = await makeRequest(`https://www.imdb.com${movieUrl}`);
         const movie$ = cheerio.load(movieResponse.data);
         
-        const rating = movie$('[data-testid="hero-rating-bar__aggregate-rating__score"] span').first().text().trim();
-        const score = parseFloat(rating);
+        // Try multiple rating selectors
+        const ratingSelectors = [
+            '[data-testid="hero-rating-bar__aggregate-rating__score"] span',
+            '.ratingValue strong span',
+            '[itemprop="ratingValue"]',
+            '.rating span',
+            '.ipl-rating-star__rating'
+        ];
         
-        return isNaN(score) ? null : score;
+        for (const selector of ratingSelectors) {
+            const ratingElement = movie$(selector).first();
+            if (ratingElement.length) {
+                const ratingText = ratingElement.text().trim();
+                const rating = parseFloat(ratingText);
+                if (!isNaN(rating) && rating >= 0 && rating <= 10) {
+                    console.log(`Found IMDb rating ${rating} for "${movieTitle}"`);
+                    return rating;
+                }
+            }
+        }
+        
+        // Try finding the rating in structured data
+        const scriptTags = movie$('script[type="application/ld+json"]');
+        for (let i = 0; i < scriptTags.length; i++) {
+            try {
+                const jsonData = JSON.parse(scriptTags.eq(i).html());
+                if (jsonData.aggregateRating && jsonData.aggregateRating.ratingValue) {
+                    const rating = parseFloat(jsonData.aggregateRating.ratingValue);
+                    if (!isNaN(rating) && rating >= 0 && rating <= 10) {
+                        console.log(`Found IMDb rating ${rating} for "${movieTitle}" in structured data`);
+                        return rating;
+                    }
+                }
+            } catch (e) {
+                console.error('Error parsing JSON-LD:', e.message);
+            }
+        }
+        
+        console.log(`No valid IMDb rating found for "${movieTitle}"`);
+        return null;
     } catch (error) {
         console.error('Error scraping IMDb:', error.message);
         return null;
