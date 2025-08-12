@@ -1,6 +1,7 @@
 const express = require('express');
 const cheerio = require('cheerio');
-const puppeteer = require('puppeteer');
+const chromium = require('chrome-aws-lambda');
+const puppeteerCore = require('puppeteer-core');
 const axios = require('axios');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -14,19 +15,13 @@ app.use(express.json());
 
 // Initialize browser for each request (Vercel's serverless functions are stateless)
 async function initBrowser() {
-    const browser = await puppeteer.launch({
+    return puppeteerCore.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath,
         headless: true,
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-            '--disable-accelerated-2d-canvas',
-            '--no-first-run',
-            '--no-zygote',
-            '--disable-gpu'
-        ]
+        ignoreHTTPSErrors: true,
     });
-    return browser;
 }
 
 // User agents to avoid being blocked
