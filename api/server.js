@@ -99,14 +99,44 @@ async function scrapeRottenTomatoes(movieTitle) {
 // Scrape Metacritic
 async function scrapeMetacritic(movieTitle) {
     try {
-        // Try the search page first
+        // First try the new Metacritic API
+        const apiUrl = `https://www.metacritic.com/api/v1/search/movie?q=${encodeURIComponent(movieTitle)}`;
+        console.log('Trying Metacritic API:', apiUrl);
+        
+        try {
+            const apiResponse = await axios.get(apiUrl, {
+                headers: {
+                    'User-Agent': getRandomUserAgent(),
+                    'Accept': 'application/json',
+                    'Origin': 'https://www.metacritic.com',
+                    'Referer': 'https://www.metacritic.com/',
+                    'x-mc-device': 'desktop',
+                    'x-mc-version': '1.0.0'
+                }
+            });
+            
+            if (apiResponse.data && apiResponse.data.hits && apiResponse.data.hits.length > 0) {
+                // Find the best matching movie
+                const hits = apiResponse.data.hits;
+                for (const hit of hits) {
+                    if (titlesMatch(hit.title, movieTitle) && hit.metaScore) {
+                        console.log(`Found Metacritic score ${hit.metaScore} for "${movieTitle}" via API`);
+                        return hit.metaScore;
+                    }
+                }
+            }
+        } catch (apiError) {
+            console.log('API attempt failed:', apiError.message);
+        }
+        
+        // If API fails, try the new Metacritic website
         const searchUrl = `https://www.metacritic.com/search/movie/${encodeURIComponent(movieTitle)}/results`;
-        console.log('Trying Metacritic search URL:', searchUrl);
+        console.log('Trying Metacritic search:', searchUrl);
         
         const searchResponse = await makeRequest(searchUrl);
         const $ = cheerio.load(searchResponse.data);
         
-        // Try multiple search result selectors
+        // Try to find the movie in search results
         const searchSelectors = [
             '.c-pageSiteSearch-results-item',
             '.search_results .result',
@@ -124,7 +154,7 @@ async function scrapeMetacritic(movieTitle) {
                 
                 if (titlesMatch(resultTitle, movieTitle)) {
                     // Try to find the score in this result
-                    const scoreElement = result.find('.metascore_w, .score, .metascore, [class*="score"], [class*="rating"]');
+                    const scoreElement = result.find('.c-siteReviewScore, .metascore_w, .score, .metascore');
                     for (let j = 0; j < scoreElement.length; j++) {
                         const scoreText = scoreElement.eq(j).text().trim();
                         const score = parseInt(scoreText);
@@ -141,14 +171,12 @@ async function scrapeMetacritic(movieTitle) {
                             const movieResponse = await makeRequest(`https://www.metacritic.com${movieUrl}`);
                             const movie$ = cheerio.load(movieResponse.data);
                             
-                            // Try multiple score selectors on the movie page
+                            // Try to find the score on the movie page
                             const movieScoreSelectors = [
-                                '.ms_wrapper .c-siteReviewScore',
-                                '.c-metascore',
+                                '.c-siteReviewScore',
                                 '.metascore_w',
-                                '[class*="score"]',
-                                '[class*="rating"]',
-                                '.c-siteReviewScore'
+                                '.score',
+                                '.metascore'
                             ];
                             
                             for (const scoreSelector of movieScoreSelectors) {
@@ -168,41 +196,6 @@ async function scrapeMetacritic(movieTitle) {
                     }
                 }
             }
-        }
-        
-        // If search fails, try direct URL approach
-        const formattedTitle = movieTitle.toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/-+/g, '-')
-            .replace(/^-|-$/g, '');
-            
-        const directUrl = `https://www.metacritic.com/movie/${formattedTitle}`;
-        try {
-            const directResponse = await makeRequest(directUrl);
-            const direct$ = cheerio.load(directResponse.data);
-            
-            const directScoreSelectors = [
-                '.ms_wrapper .c-siteReviewScore',
-                '.c-metascore',
-                '.metascore_w',
-                '[class*="score"]',
-                '[class*="rating"]',
-                '.c-siteReviewScore'
-            ];
-            
-            for (const selector of directScoreSelectors) {
-                const element = direct$(selector);
-                for (let i = 0; i < element.length; i++) {
-                    const scoreText = element.eq(i).text().trim();
-                    const score = parseInt(scoreText);
-                    if (!isNaN(score) && score >= 0 && score <= 100) {
-                        console.log(`Found Metacritic score ${score} for "${movieTitle}" using direct URL`);
-                        return score;
-                    }
-                }
-            }
-        } catch (error) {
-            console.error('Direct URL approach failed:', error.message);
         }
         
         console.log(`No valid Metacritic score found for "${movieTitle}"`);
