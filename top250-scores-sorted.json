@@ -1,0 +1,2252 @@
+[
+  {
+    "rank": 2,
+    "title": "The Godfather",
+    "year": "N/A",
+    "imdbRating": 9.2,
+    "rottenTomatoes": 97,
+    "metacritic": 100,
+    "unifiedScore": 96
+  },
+  {
+    "rank": 5,
+    "title": "12 Angry Men",
+    "year": "N/A",
+    "imdbRating": 9,
+    "rottenTomatoes": 100,
+    "metacritic": 97,
+    "unifiedScore": 96
+  },
+  {
+    "rank": 23,
+    "title": "Seven Samurai",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 100,
+    "metacritic": 98,
+    "unifiedScore": 95
+  },
+  {
+    "rank": 45,
+    "title": "Casablanca",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 99,
+    "metacritic": 100,
+    "unifiedScore": 95
+  },
+  {
+    "rank": 51,
+    "title": "Rear Window",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 99,
+    "metacritic": 100,
+    "unifiedScore": 95
+  },
+  {
+    "rank": 7,
+    "title": "Schindler's List",
+    "year": "N/A",
+    "imdbRating": 9,
+    "rottenTomatoes": 98,
+    "metacritic": 95,
+    "unifiedScore": 94
+  },
+  {
+    "rank": 34,
+    "title": "Parasite",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 99,
+    "metacritic": 97,
+    "unifiedScore": 94
+  },
+  {
+    "rank": 89,
+    "title": "Singin' in the Rain",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 100,
+    "metacritic": 99,
+    "unifiedScore": 94
+  },
+  {
+    "rank": 108,
+    "title": "Citizen Kane",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 99,
+    "metacritic": 100,
+    "unifiedScore": 94
+  },
+  {
+    "rank": 164,
+    "title": "Gone with the Wind",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 90,
+    "metacritic": 97,
+    "unifiedScore": 94
+  },
+  {
+    "rank": 214,
+    "title": "Tokyo Story",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 100,
+    "metacritic": 100,
+    "unifiedScore": 94
+  },
+  {
+    "rank": 6,
+    "title": "The Lord of the Rings: The Return of the King",
+    "year": "N/A",
+    "imdbRating": 9,
+    "rottenTomatoes": 94,
+    "metacritic": 94,
+    "unifiedScore": 93
+  },
+  {
+    "rank": 31,
+    "title": "Spirited Away",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 96,
+    "metacritic": 96,
+    "unifiedScore": 93
+  },
+  {
+    "rank": 50,
+    "title": "Modern Times",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 98,
+    "metacritic": 96,
+    "unifiedScore": 93
+  },
+  {
+    "rank": 54,
+    "title": "City Lights",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 95,
+    "metacritic": 99,
+    "unifiedScore": 93
+  },
+  {
+    "rank": 75,
+    "title": "Toy Story",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 100,
+    "metacritic": 96,
+    "unifiedScore": 93
+  },
+  {
+    "rank": 105,
+    "title": "North by Northwest",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 97,
+    "metacritic": 98,
+    "unifiedScore": 93
+  },
+  {
+    "rank": 141,
+    "title": "All About Eve",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 99,
+    "metacritic": 98,
+    "unifiedScore": 93
+  },
+  {
+    "rank": 154,
+    "title": "The Treasure of the Sierra Madre",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 100,
+    "metacritic": 98,
+    "unifiedScore": 93
+  },
+  {
+    "rank": 207,
+    "title": "The Wages of Fear",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 100,
+    "metacritic": 85,
+    "unifiedScore": 93
+  },
+  {
+    "rank": 4,
+    "title": "The Godfather Part II",
+    "year": "N/A",
+    "imdbRating": 9,
+    "rottenTomatoes": 96,
+    "metacritic": 90,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 8,
+    "title": "Pulp Fiction",
+    "year": "N/A",
+    "imdbRating": 8.8,
+    "rottenTomatoes": 92,
+    "metacritic": 95,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 9,
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "year": "N/A",
+    "imdbRating": 8.9,
+    "rottenTomatoes": 92,
+    "metacritic": 92,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 62,
+    "title": "Sunset Boulevard",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 98,
+    "metacritic": 94,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 100,
+    "title": "Lawrence of Arabia",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 93,
+    "metacritic": 100,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 104,
+    "title": "Double Indemnity",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 97,
+    "metacritic": 95,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 110,
+    "title": "Vertigo",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 93,
+    "metacritic": 100,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 113,
+    "title": "A Separation",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 99,
+    "metacritic": 95,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 137,
+    "title": "Some Like It Hot",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 95,
+    "metacritic": 98,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 144,
+    "title": "Ran",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 96,
+    "metacritic": 97,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 150,
+    "title": "Pan's Labyrinth",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 95,
+    "metacritic": 98,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 168,
+    "title": "Rashomon",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 98,
+    "metacritic": 98,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 215,
+    "title": "The Third Man",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 99,
+    "metacritic": 97,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 235,
+    "title": "The Passion of Joan of Arc",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 98,
+    "metacritic": 98,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 242,
+    "title": "The Battle of Algiers",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 99,
+    "metacritic": 96,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 243,
+    "title": "The Grapes of Wrath",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 100,
+    "metacritic": 96,
+    "unifiedScore": 92
+  },
+  {
+    "rank": 17,
+    "title": "Goodfellas",
+    "year": "N/A",
+    "imdbRating": 8.7,
+    "rottenTomatoes": 94,
+    "metacritic": 92,
+    "unifiedScore": 91
+  },
+  {
+    "rank": 61,
+    "title": "The Lives of Others",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 92,
+    "metacritic": 89,
+    "unifiedScore": 91
+  },
+  {
+    "rank": 93,
+    "title": "Toy Story 3",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 98,
+    "metacritic": 92,
+    "unifiedScore": 91
+  },
+  {
+    "rank": 95,
+    "title": "Ikiru",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 98,
+    "metacritic": 92,
+    "unifiedScore": 91
+  },
+  {
+    "rank": 170,
+    "title": "Inside Out",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 98,
+    "metacritic": 94,
+    "unifiedScore": 91
+  },
+  {
+    "rank": 190,
+    "title": "12 Years a Slave",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 95,
+    "metacritic": 96,
+    "unifiedScore": 91
+  },
+  {
+    "rank": 196,
+    "title": "Ratatouille",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 96,
+    "unifiedScore": 91
+  },
+  {
+    "rank": 227,
+    "title": "The Best Years of Our Lives",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 98,
+    "metacritic": 93,
+    "unifiedScore": 91
+  },
+  {
+    "rank": 3,
+    "title": "The Dark Knight",
+    "year": "N/A",
+    "imdbRating": 9.1,
+    "rottenTomatoes": 94,
+    "metacritic": 85,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 12,
+    "title": "The Lord of the Rings: The Two Towers",
+    "year": "N/A",
+    "imdbRating": 8.8,
+    "rottenTomatoes": 95,
+    "metacritic": 87,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 21,
+    "title": "It's a Wonderful Life",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 94,
+    "metacritic": 89,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 24,
+    "title": "Saving Private Ryan",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 94,
+    "metacritic": 91,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 29,
+    "title": "Star Wars: Episode IV - A New Hope",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 94,
+    "metacritic": 90,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 37,
+    "title": "Grave of the Fireflies",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 100,
+    "metacritic": 94,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 40,
+    "title": "Harakiri",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 100,
+    "metacritic": 85,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 56,
+    "title": "WALL·E",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 95,
+    "metacritic": null,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 65,
+    "title": "Paths of Glory",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 96,
+    "metacritic": 90,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 77,
+    "title": "High and Low",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 96,
+    "metacritic": 90,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 98,
+    "title": "The Apartment",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 93,
+    "metacritic": 94,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 129,
+    "title": "Hamilton",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 98,
+    "metacritic": 88,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 156,
+    "title": "Yojimbo",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 96,
+    "metacritic": 93,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 157,
+    "title": "Finding Nemo",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 99,
+    "metacritic": 90,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 166,
+    "title": "Chinatown",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 98,
+    "metacritic": 92,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 202,
+    "title": "The Gold Rush",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 98,
+    "metacritic": 90,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 210,
+    "title": "On the Waterfront",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 99,
+    "metacritic": 91,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 216,
+    "title": "Spotlight",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 97,
+    "metacritic": 93,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 224,
+    "title": "Jai Bhim",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 100,
+    "metacritic": 83,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 234,
+    "title": "The Wizard of Oz",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 98,
+    "metacritic": 92,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 244,
+    "title": "To Be or Not to Be",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 93,
+    "unifiedScore": 90
+  },
+  {
+    "rank": 22,
+    "title": "The Silence of the Lambs",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 95,
+    "metacritic": 86,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 39,
+    "title": "Whiplash",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 94,
+    "metacritic": 89,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 44,
+    "title": "Spider-Man: Across the Spider-Verse",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 95,
+    "metacritic": 86,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 53,
+    "title": "Once Upon a Time in the West",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 96,
+    "metacritic": 82,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 55,
+    "title": "Apocalypse Now",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 90,
+    "metacritic": 94,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 63,
+    "title": "Spider-Man: Into the Spider-Verse",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 97,
+    "metacritic": 87,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 80,
+    "title": "Das Boot",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 98,
+    "metacritic": 85,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 120,
+    "title": "Oppenheimer",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 93,
+    "metacritic": 90,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 123,
+    "title": "The Chaos Class Failed the Class",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": null,
+    "metacritic": 92,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 132,
+    "title": "The Truman Show",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 94,
+    "metacritic": 90,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 140,
+    "title": "The Father",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 98,
+    "metacritic": 88,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 142,
+    "title": "There Will Be Blood",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 91,
+    "metacritic": 93,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 147,
+    "title": "No Country for Old Men",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 93,
+    "metacritic": 92,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 155,
+    "title": "The Best of Youth",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 94,
+    "metacritic": 89,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 184,
+    "title": "Mad Max: Fury Road",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 97,
+    "metacritic": 90,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 221,
+    "title": "La haine",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": null,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 228,
+    "title": "Before Sunset",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 94,
+    "metacritic": 91,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 231,
+    "title": "The Incredibles",
+    "year": "N/A",
+    "imdbRating": 8,
+    "rottenTomatoes": 97,
+    "metacritic": 90,
+    "unifiedScore": 89
+  },
+  {
+    "rank": 1,
+    "title": "The Shawshank Redemption",
+    "year": "N/A",
+    "imdbRating": 9.3,
+    "rottenTomatoes": 89,
+    "metacritic": 82,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 19,
+    "title": "One Flew Over the Cuckoo's Nest",
+    "year": "N/A",
+    "imdbRating": 8.7,
+    "rottenTomatoes": 93,
+    "metacritic": 84,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 30,
+    "title": "Back to the Future",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 93,
+    "metacritic": 87,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 32,
+    "title": "The Pianist",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 95,
+    "metacritic": 85,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 59,
+    "title": "Raiders of the Lost Ark",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 94,
+    "metacritic": 86,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 64,
+    "title": "Witness for the Prosecution",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 100,
+    "metacritic": 79,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 82,
+    "title": "Your Name",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 98,
+    "metacritic": 81,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 96,
+    "title": "Eternal Sunshine of the Spotless Mind",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 92,
+    "metacritic": 89,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 114,
+    "title": "To Kill a Mockingbird",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 93,
+    "metacritic": 88,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 131,
+    "title": "Taxi Driver",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 89,
+    "metacritic": 94,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 149,
+    "title": "Unforgiven",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 96,
+    "metacritic": 85,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 160,
+    "title": "Monty Python and the Holy Grail",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 92,
+    "metacritic": 91,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 174,
+    "title": "The Bridge on the River Kwai",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 88,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 175,
+    "title": "Raging Bull",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 92,
+    "metacritic": 90,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 176,
+    "title": "The Wild Robot",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 96,
+    "metacritic": 85,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 200,
+    "title": "Jaws",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 97,
+    "metacritic": 87,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 213,
+    "title": "Wild Strawberries",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 94,
+    "metacritic": 88,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 219,
+    "title": "The Terminator",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 100,
+    "metacritic": 84,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 249,
+    "title": "Gangs of Wasseypur",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 94,
+    "metacritic": 89,
+    "unifiedScore": 88
+  },
+  {
+    "rank": 15,
+    "title": "Star Wars: Episode V - The Empire Strikes Back",
+    "year": "N/A",
+    "imdbRating": 8.7,
+    "rottenTomatoes": 93,
+    "metacritic": 82,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 38,
+    "title": "The Departed",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 91,
+    "metacritic": 85,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 57,
+    "title": "Memento",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 94,
+    "metacritic": 83,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 70,
+    "title": "Aliens",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 94,
+    "metacritic": 84,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 72,
+    "title": "Coco",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 97,
+    "metacritic": 81,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 73,
+    "title": "Amadeus",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 90,
+    "metacritic": 87,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 90,
+    "title": "Come and See",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 90,
+    "metacritic": null,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 111,
+    "title": "Amélie",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 90,
+    "metacritic": null,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 177,
+    "title": "Harry Potter and the Deathly Hallows: Part 2",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 85,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 178,
+    "title": "Fargo",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 95,
+    "metacritic": 84,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 185,
+    "title": "My Neighbor Totoro",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 94,
+    "metacritic": 87,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 189,
+    "title": "The Grand Budapest Hotel",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 92,
+    "metacritic": 88,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 192,
+    "title": "Before Sunrise",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 100,
+    "metacritic": 79,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 222,
+    "title": "The Seventh Seal",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 93,
+    "metacritic": 88,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 226,
+    "title": "Platoon",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 89,
+    "metacritic": 92,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 238,
+    "title": "The Iron Giant",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 85,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 240,
+    "title": "Network",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 83,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 241,
+    "title": "The Handmaiden",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 85,
+    "unifiedScore": 87
+  },
+  {
+    "rank": 99,
+    "title": "2001: A Space Odyssey",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 90,
+    "metacritic": 84,
+    "unifiedScore": 86
+  },
+  {
+    "rank": 117,
+    "title": "The Sting",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 93,
+    "metacritic": 83,
+    "unifiedScore": 86
+  },
+  {
+    "rank": 171,
+    "title": "Three Billboards Outside Ebbing, Missouri",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 90,
+    "metacritic": 88,
+    "unifiedScore": 86
+  },
+  {
+    "rank": 181,
+    "title": "Million Dollar Baby",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 90,
+    "metacritic": 86,
+    "unifiedScore": 86
+  },
+  {
+    "rank": 194,
+    "title": "Memories of Murder",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 95,
+    "metacritic": 82,
+    "unifiedScore": 86
+  },
+  {
+    "rank": 199,
+    "title": "In the Name of the Father",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 94,
+    "metacritic": 84,
+    "unifiedScore": 86
+  },
+  {
+    "rank": 206,
+    "title": "The Deer Hunter",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 86,
+    "metacritic": 90,
+    "unifiedScore": 86
+  },
+  {
+    "rank": 10,
+    "title": "The Good, the Bad and the Ugly",
+    "year": "N/A",
+    "imdbRating": 8.8,
+    "rottenTomatoes": 97,
+    "metacritic": 90,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 26,
+    "title": "City of God",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 91,
+    "metacritic": 79,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 46,
+    "title": "Cinema Paradiso",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 91,
+    "metacritic": 80,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 49,
+    "title": "Alien",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 80,
+    "metacritic": 89,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 58,
+    "title": "Dune: Part Two",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 92,
+    "metacritic": 79,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 71,
+    "title": "The Dark Knight Rises",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 94,
+    "metacritic": 78,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 74,
+    "title": "Avengers: Endgame",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 94,
+    "metacritic": 78,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 83,
+    "title": "Princess Mononoke",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 93,
+    "metacritic": 78,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 84,
+    "title": "American Beauty",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 87,
+    "metacritic": 84,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 97,
+    "title": "Incendies",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 91,
+    "metacritic": 80,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 101,
+    "title": "Reservoir Dogs",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 90,
+    "metacritic": 81,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 119,
+    "title": "Metropolis",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 97,
+    "metacritic": 75,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 126,
+    "title": "Downfall",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 90,
+    "metacritic": 82,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 146,
+    "title": "Top Gun: Maverick",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 96,
+    "metacritic": 78,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 173,
+    "title": "Trainspotting",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 90,
+    "metacritic": 83,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 198,
+    "title": "Monsters, Inc",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 79,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 203,
+    "title": "Ford v Ferrari",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 92,
+    "metacritic": 81,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 204,
+    "title": "Sherlock Jr",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 86,
+    "metacritic": 88,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 237,
+    "title": "A Silent Voice: The Movie",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 95,
+    "metacritic": 78,
+    "unifiedScore": 85
+  },
+  {
+    "rank": 28,
+    "title": "Terminator 2: Judgment Day",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 91,
+    "metacritic": 75,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 52,
+    "title": "Django Unchained",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 87,
+    "metacritic": 81,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 76,
+    "title": "Good Will Hunting",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 97,
+    "metacritic": 71,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 85,
+    "title": "3 Idiots",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 100,
+    "metacritic": 67,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 158,
+    "title": "Howl's Moving Castle",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 88,
+    "metacritic": 82,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 161,
+    "title": "The Elephant Man",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 91,
+    "metacritic": 78,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 165,
+    "title": "The Secret in Their Eyes",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 89,
+    "metacritic": 80,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 172,
+    "title": "Catch Me If You Can",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 75,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 193,
+    "title": "Blade Runner",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 88,
+    "metacritic": 84,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 201,
+    "title": "Wild Tales",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 94,
+    "metacritic": 77,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 218,
+    "title": "Maharaja",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 83,
+    "metacritic": null,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 225,
+    "title": "Hotel Rwanda",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 91,
+    "metacritic": 79,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 250,
+    "title": "Demon Slayer: Kimetsu no Yaiba - The Movie: Mugen Train",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 98,
+    "metacritic": 72,
+    "unifiedScore": 84
+  },
+  {
+    "rank": 14,
+    "title": "Inception",
+    "year": "N/A",
+    "imdbRating": 8.8,
+    "rottenTomatoes": 87,
+    "metacritic": 74,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 35,
+    "title": "Psycho",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 68,
+    "metacritic": 97,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 47,
+    "title": "The Usual Suspects",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 87,
+    "metacritic": 76,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 87,
+    "title": "Capernaum",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 90,
+    "metacritic": 75,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 109,
+    "title": "Full Metal Jacket",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 90,
+    "metacritic": 78,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 112,
+    "title": "Like Stars on Earth",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 93,
+    "metacritic": 72,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 115,
+    "title": "Die Hard",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 94,
+    "metacritic": 72,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 122,
+    "title": "1917",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 88,
+    "metacritic": 78,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 134,
+    "title": "For a Few Dollars More",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 92,
+    "metacritic": 74,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 145,
+    "title": "Casino",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 94,
+    "metacritic": 73,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 151,
+    "title": "Kill Bill: Vol",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 85,
+    "metacritic": 83,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 186,
+    "title": "Barry Lyndon",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 78,
+    "metacritic": 89,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 195,
+    "title": "Gone Girl",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 88,
+    "metacritic": 79,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 205,
+    "title": "Mary and Max",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 96,
+    "metacritic": 72,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 211,
+    "title": "Logan",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 92,
+    "metacritic": 77,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 236,
+    "title": "Stand by Me",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 92,
+    "metacritic": 75,
+    "unifiedScore": 83
+  },
+  {
+    "rank": 11,
+    "title": "Forrest Gump",
+    "year": "N/A",
+    "imdbRating": 8.8,
+    "rottenTomatoes": 75,
+    "metacritic": 82,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 20,
+    "title": "Se7en",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": null,
+    "metacritic": 78,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 118,
+    "title": "A Clockwork Orange",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 86,
+    "metacritic": 77,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 148,
+    "title": "The Thing",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 85,
+    "metacritic": 78,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 163,
+    "title": "Dial M for Murder",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 90,
+    "metacritic": 75,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 183,
+    "title": "Dead Poets Society",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 85,
+    "metacritic": 79,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 191,
+    "title": "Spider-Man: No Way Home",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 93,
+    "metacritic": 71,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 209,
+    "title": "Mr",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 93,
+    "metacritic": 75,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 223,
+    "title": "Room",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 80,
+    "metacritic": 86,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 239,
+    "title": "My Father and My Son",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": null,
+    "metacritic": null,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 246,
+    "title": "Groundhog Day",
+    "year": "N/A",
+    "imdbRating": 8,
+    "rottenTomatoes": 94,
+    "metacritic": 72,
+    "unifiedScore": 82
+  },
+  {
+    "rank": 16,
+    "title": "The Matrix",
+    "year": "N/A",
+    "imdbRating": 8.7,
+    "rottenTomatoes": 83,
+    "metacritic": 73,
+    "unifiedScore": 81
+  },
+  {
+    "rank": 68,
+    "title": "Inglourious Basterds",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 89,
+    "metacritic": 69,
+    "unifiedScore": 81
+  },
+  {
+    "rank": 79,
+    "title": "Oldboy",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 82,
+    "metacritic": 78,
+    "unifiedScore": 81
+  },
+  {
+    "rank": 88,
+    "title": "Once Upon a Time in America",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 86,
+    "metacritic": 75,
+    "unifiedScore": 81
+  },
+  {
+    "rank": 103,
+    "title": "Heat",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 84,
+    "metacritic": 76,
+    "unifiedScore": 81
+  },
+  {
+    "rank": 162,
+    "title": "Klaus",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 95,
+    "metacritic": 65,
+    "unifiedScore": 81
+  },
+  {
+    "rank": 187,
+    "title": "Children of Heaven",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 83,
+    "metacritic": 77,
+    "unifiedScore": 81
+  },
+  {
+    "rank": 212,
+    "title": "Rocky",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 93,
+    "metacritic": 70,
+    "unifiedScore": 81
+  },
+  {
+    "rank": 43,
+    "title": "Léon: The Professional",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 75,
+    "metacritic": null,
+    "unifiedScore": 80
+  },
+  {
+    "rank": 139,
+    "title": "Jurassic Park",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 91,
+    "metacritic": 68,
+    "unifiedScore": 80
+  },
+  {
+    "rank": 248,
+    "title": "Drishyam",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 78,
+    "metacritic": null,
+    "unifiedScore": 80
+  },
+  {
+    "rank": 13,
+    "title": "Fight Club",
+    "year": "N/A",
+    "imdbRating": 8.8,
+    "rottenTomatoes": 81,
+    "metacritic": 67,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 60,
+    "title": "Avengers: Infinity War",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 85,
+    "metacritic": 68,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 66,
+    "title": "The Shining",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 84,
+    "metacritic": 68,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 128,
+    "title": "The Wolf of Wall Street",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 79,
+    "metacritic": 75,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 133,
+    "title": "Batman Begins",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 85,
+    "metacritic": 70,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 135,
+    "title": "Judgment at Nuremberg",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 93,
+    "metacritic": 60,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 159,
+    "title": "The Great Escape",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 94,
+    "metacritic": 61,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 179,
+    "title": "Warrior",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 84,
+    "metacritic": 71,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 188,
+    "title": "Hacksaw Ridge",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 84,
+    "metacritic": 71,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 245,
+    "title": "Into the Wild",
+    "year": "N/A",
+    "imdbRating": 8,
+    "rottenTomatoes": 83,
+    "metacritic": 73,
+    "unifiedScore": 79
+  },
+  {
+    "rank": 18,
+    "title": "Interstellar",
+    "year": "N/A",
+    "imdbRating": 8.7,
+    "rottenTomatoes": 73,
+    "metacritic": 74,
+    "unifiedScore": 78
+  },
+  {
+    "rank": 67,
+    "title": "The Great Dictator",
+    "year": "N/A",
+    "imdbRating": 8.4,
+    "rottenTomatoes": 92,
+    "metacritic": 58,
+    "unifiedScore": 78
+  },
+  {
+    "rank": 124,
+    "title": "L",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 88,
+    "metacritic": null,
+    "unifiedScore": 78
+  },
+  {
+    "rank": 153,
+    "title": "Prisoners",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 81,
+    "metacritic": 70,
+    "unifiedScore": 78
+  },
+  {
+    "rank": 180,
+    "title": "Gran Torino",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 81,
+    "metacritic": 73,
+    "unifiedScore": 78
+  },
+  {
+    "rank": 42,
+    "title": "American History X",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 84,
+    "metacritic": 62,
+    "unifiedScore": 77
+  },
+  {
+    "rank": 91,
+    "title": "Requiem for a Dream",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 78,
+    "metacritic": 71,
+    "unifiedScore": 77
+  },
+  {
+    "rank": 106,
+    "title": "Up",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 67,
+    "metacritic": 88,
+    "unifiedScore": 77
+  },
+  {
+    "rank": 116,
+    "title": "Indiana Jones and the Last Crusade",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 84,
+    "metacritic": 65,
+    "unifiedScore": 77
+  },
+  {
+    "rank": 143,
+    "title": "The Sixth Sense",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 86,
+    "metacritic": 64,
+    "unifiedScore": 77
+  },
+  {
+    "rank": 197,
+    "title": "How to Train Your Dragon",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 76,
+    "metacritic": 77,
+    "unifiedScore": 77
+  },
+  {
+    "rank": 220,
+    "title": "The Big Lebowski",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 80,
+    "metacritic": 71,
+    "unifiedScore": 77
+  },
+  {
+    "rank": 36,
+    "title": "The Lion King",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 56,
+    "metacritic": 88,
+    "unifiedScore": 76
+  },
+  {
+    "rank": 41,
+    "title": "The Prestige",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 77,
+    "metacritic": 66,
+    "unifiedScore": 76
+  },
+  {
+    "rank": 81,
+    "title": "Braveheart",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 76,
+    "metacritic": 68,
+    "unifiedScore": 76
+  },
+  {
+    "rank": 102,
+    "title": "Scarface",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 79,
+    "metacritic": 65,
+    "unifiedScore": 76
+  },
+  {
+    "rank": 130,
+    "title": "Green Book",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 77,
+    "metacritic": 69,
+    "unifiedScore": 76
+  },
+  {
+    "rank": 152,
+    "title": "A Beautiful Mind",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 74,
+    "metacritic": 72,
+    "unifiedScore": 76
+  },
+  {
+    "rank": 229,
+    "title": "The Sound of Music",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 83,
+    "metacritic": 63,
+    "unifiedScore": 76
+  },
+  {
+    "rank": 25,
+    "title": "The Green Mile",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 79,
+    "metacritic": 61,
+    "unifiedScore": 75
+  },
+  {
+    "rank": 27,
+    "title": "Life Is Beautiful",
+    "year": "N/A",
+    "imdbRating": 8.6,
+    "rottenTomatoes": 81,
+    "metacritic": 58,
+    "unifiedScore": 75
+  },
+  {
+    "rank": 69,
+    "title": "12th Fail",
+    "year": "N/A",
+    "imdbRating": 8.7,
+    "rottenTomatoes": 91,
+    "metacritic": 47,
+    "unifiedScore": 75
+  },
+  {
+    "rank": 92,
+    "title": "Star Wars: Episode VI - Return of the Jedi",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 84,
+    "metacritic": 58,
+    "unifiedScore": 75
+  },
+  {
+    "rank": 33,
+    "title": "Gladiator",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 70,
+    "metacritic": 67,
+    "unifiedScore": 74
+  },
+  {
+    "rank": 167,
+    "title": "Lock, Stock and Two Smoking Barrels",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 75,
+    "metacritic": 67,
+    "unifiedScore": 74
+  },
+  {
+    "rank": 217,
+    "title": "Pirates of the Caribbean: The Curse of the Black Pearl",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 79,
+    "metacritic": 63,
+    "unifiedScore": 74
+  },
+  {
+    "rank": 247,
+    "title": "The Help",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 76,
+    "metacritic": 62,
+    "unifiedScore": 73
+  },
+  {
+    "rank": 48,
+    "title": "The Intouchables",
+    "year": "N/A",
+    "imdbRating": 8.5,
+    "rottenTomatoes": 75,
+    "metacritic": 57,
+    "unifiedScore": 72
+  },
+  {
+    "rank": 169,
+    "title": "V for Vendetta",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 73,
+    "metacritic": 62,
+    "unifiedScore": 72
+  },
+  {
+    "rank": 233,
+    "title": "Rush",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 62,
+    "metacritic": 74,
+    "unifiedScore": 72
+  },
+  {
+    "rank": 136,
+    "title": "Shutter Island",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 69,
+    "metacritic": 63,
+    "unifiedScore": 71
+  },
+  {
+    "rank": 138,
+    "title": "The Kid",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 90,
+    "metacritic": 51,
+    "unifiedScore": 71
+  },
+  {
+    "rank": 78,
+    "title": "Dr",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 73,
+    "metacritic": 75,
+    "unifiedScore": 70
+  },
+  {
+    "rank": 107,
+    "title": "M",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 79,
+    "metacritic": null,
+    "unifiedScore": 70
+  },
+  {
+    "rank": 121,
+    "title": "Snatch",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 74,
+    "metacritic": 55,
+    "unifiedScore": 70
+  },
+  {
+    "rank": 94,
+    "title": "The Hunt",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 57,
+    "metacritic": 77,
+    "unifiedScore": 67
+  },
+  {
+    "rank": 125,
+    "title": "Bicycle Thieves",
+    "year": "N/A",
+    "imdbRating": 8.2,
+    "rottenTomatoes": 99,
+    "metacritic": 20,
+    "unifiedScore": 67
+  },
+  {
+    "rank": 182,
+    "title": "Ben-Hur",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 25,
+    "metacritic": 90,
+    "unifiedScore": 65
+  },
+  {
+    "rank": 232,
+    "title": "Hachi: A Dog's Tale",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 64,
+    "metacritic": 50,
+    "unifiedScore": 65
+  },
+  {
+    "rank": 127,
+    "title": "Dangal",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 89,
+    "metacritic": 21,
+    "unifiedScore": 64
+  },
+  {
+    "rank": 230,
+    "title": "The Exorcist",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 22,
+    "metacritic": 83,
+    "unifiedScore": 62
+  },
+  {
+    "rank": 208,
+    "title": "The General",
+    "year": "N/A",
+    "imdbRating": 8.1,
+    "rottenTomatoes": 22,
+    "metacritic": 81,
+    "unifiedScore": 61
+  },
+  {
+    "rank": 86,
+    "title": "Joker",
+    "year": "N/A",
+    "imdbRating": 8.3,
+    "rottenTomatoes": 31,
+    "metacritic": 59,
+    "unifiedScore": 58
+  }
+]

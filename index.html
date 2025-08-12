@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Unified Movie Score</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Custom Dune Rise font -->
+    <style>
+        @font-face {
+            font-family: 'Dune Rise';
+            src: url('fonts/DuneRise.woff2') format('woff2');
+            font-weight: 300 700;
+            font-display: swap;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                Unified Movie Score
+            </h1>
+            <p class="subtitle">Get a comprehensive rating from Rotten Tomatoes, Metacritic, and IMDb</p>
+        </header>
+
+        <main class="main">
+            <div class="search-section">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="movieInput" 
+                        class="search-input" 
+                        placeholder="Enter a movie title..."
+                        autocomplete="off"
+                    >
+                    <button id="searchBtn" class="search-button">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <div class="top-movies">
+                <div class="top-movies-scroll">
+                    <button class="top-movie" data-movie="The Godfather">
+                        <span class="top-movie-score">96</span>
+                        <span class="top-movie-title">The Godfather</span>
+                    </button>
+                    <button class="top-movie" data-movie="12 Angry Men">
+                        <span class="top-movie-score">96</span>
+                        <span class="top-movie-title">12 Angry Men</span>
+                    </button>
+                    <button class="top-movie" data-movie="Seven Samurai">
+                        <span class="top-movie-score">95</span>
+                        <span class="top-movie-title">Seven Samurai</span>
+                    </button>
+                    <button class="top-movie" data-movie="Casablanca">
+                        <span class="top-movie-score">95</span>
+                        <span class="top-movie-title">Casablanca</span>
+                    </button>
+                    <button class="top-movie" data-movie="Rear Window">
+                        <span class="top-movie-score">95</span>
+                        <span class="top-movie-title">Rear Window</span>
+                    </button>
+                    <button class="top-movie" data-movie="Schindler's List">
+                        <span class="top-movie-score">94</span>
+                        <span class="top-movie-title">Schindler's List</span>
+                    </button>
+                    <button class="top-movie" data-movie="Parasite">
+                        <span class="top-movie-score">94</span>
+                        <span class="top-movie-title">Parasite</span>
+                    </button>
+                    <button class="top-movie" data-movie="Singin' in the Rain">
+                        <span class="top-movie-score">94</span>
+                        <span class="top-movie-title">Singin' in the Rain</span>
+                    </button>
+                    <button class="top-movie" data-movie="Citizen Kane">
+                        <span class="top-movie-score">94</span>
+                        <span class="top-movie-title">Citizen Kane</span>
+                    </button>
+                    <button class="top-movie" data-movie="Gone with the Wind">
+                        <span class="top-movie-score">94</span>
+                        <span class="top-movie-title">Gone with the Wind</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="loadingSpinner" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Searching for movie scores...</p>
+            </div>
+
+            <div id="resultsSection" class="results-section hidden">
+                <div class="movie-info">
+                    <h2 id="movieTitle" class="movie-title"></h2>
+                    <div class="unified-score">
+                        <div class="score-circle">
+                            <span id="unifiedScore" class="score-number">0</span>
+                            <span class="score-label">Unified Score</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scores-grid">
+                    <div class="score-card">
+                        <div class="score-header">
+                            <i class="fas fa-tomato"></i>
+                            <h3>Rotten Tomatoes</h3>
+                        </div>
+                        <div class="score-value" id="rtScore">-</div>
+                        <div class="score-source">Critic Score</div>
+                    </div>
+
+                    <div class="score-card">
+                        <div class="score-header">
+                            <i class="fas fa-star"></i>
+                            <h3>Metacritic</h3>
+                        </div>
+                        <div class="score-value" id="metacriticScore">-</div>
+                        <div class="score-source">Metascore</div>
+                    </div>
+
+                    <div class="score-card">
+                        <div class="score-header">
+                            <i class="fas fa-imdb"></i>
+                            <h3>IMDb</h3>
+                        </div>
+                        <div class="score-value" id="imdbScore">-</div>
+                        <div class="score-source">User Rating</div>
+                    </div>
+                </div>
+
+                <div class="score-breakdown">
+                    <h3>Score Breakdown</h3>
+                    <div class="breakdown-item">
+                        <span>Rotten Tomatoes:</span>
+                        <span id="rtBreakdown">-</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>Metacritic:</span>
+                        <span id="metacriticBreakdown">-</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>IMDb:</span>
+                        <span id="imdbBreakdown">-</span>
+                    </div>
+                    <div class="breakdown-item total">
+                        <span>Total:</span>
+                        <span id="totalBreakdown">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errorSection" class="error-section hidden">
+                <div class="error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Movie Not Found</h3>
+                <p id="errorMessage">We couldn't find scores for that movie. Please try a different title.</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Data aggregated from Rotten Tomatoes, Metacritic, and IMDb</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
