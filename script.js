@@ -80,18 +80,37 @@ class MovieScoreApp {
 
     async getMovieScores(movieTitle) {
         try {
+            console.log('Fetching scores for:', movieTitle);
+            
             // Make API call to our Node.js backend
-            const response = await fetch(`/api/movie/${encodeURIComponent(movieTitle)}`);
+            const response = await fetch(`/api/server/movie/${encodeURIComponent(movieTitle)}`, {
+                timeout: 60000 // 60 second timeout
+            });
             
             if (!response.ok) {
                 const errorData = await response.json();
+                console.error('API Response not OK:', {
+                    status: response.status,
+                    statusText: response.statusText,
+                    errorData
+                });
                 throw new Error(errorData.error || 'Failed to fetch movie scores');
             }
             
             const data = await response.json();
+            console.log('Received scores:', data);
+            
+            if (!data.scores) {
+                console.error('Invalid API response format:', data);
+                throw new Error('Invalid response format from server');
+            }
+            
             return data.scores;
         } catch (error) {
             console.error('API Error:', error);
+            if (error.name === 'AbortError') {
+                throw new Error('Request timed out. Please try again.');
+            }
             throw error;
         }
     }
