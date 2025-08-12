@@ -83,7 +83,7 @@ class MovieScoreApp {
             console.log('Fetching scores for:', movieTitle);
             
             // Make API call to our Node.js backend
-            const response = await fetch(`/api/server/movie/${encodeURIComponent(movieTitle)}`, {
+            const response = await fetch(`/.netlify/functions/server/${encodeURIComponent(movieTitle)}`, {
                 timeout: 60000 // 60 second timeout
             });
             

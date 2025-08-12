@@ -1,15 +1,5 @@
-const express = require('express');
 const cheerio = require('cheerio');
 const axios = require('axios');
-const cors = require('cors');
-const helmet = require('helmet');
-
-const app = express();
-
-// Middleware
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
 
 // User agents to avoid being blocked
 const userAgents = [
@@ -153,80 +143,113 @@ async function scrapeIMDb(movieTitle) {
     }
 }
 
-// Main API endpoint
-app.get('/api/movie/:title', async (req, res) => {
+// Netlify function handler
+exports.handler = async (event, context) => {
+    // Enable CORS
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+    };
+
+    // Handle OPTIONS request for CORS
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 204,
+            headers
+        };
+    }
+
+    // Only allow GET requests
+    if (event.httpMethod !== 'GET') {
+        return {
+            statusCode: 405,
+            headers,
+            body: JSON.stringify({ error: 'Method not allowed' })
+        };
+    }
+
     try {
-        const movieTitle = req.params.title;
+        // Extract movie title from path parameter
+        const movieTitle = event.path.split('/').pop();
         if (!movieTitle) {
-            return res.status(400).json({ error: 'Movie title is required' });
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({ error: 'Movie title is required' })
+            };
         }
-        
+
         console.log(`Searching for movie: ${movieTitle}`);
-        
+
         const [rottenTomatoesScore, metacriticScore, imdbScore] = await Promise.allSettled([
             scrapeRottenTomatoes(movieTitle),
             scrapeMetacritic(movieTitle),
             scrapeIMDb(movieTitle)
         ]);
-        
+
         console.log('Scores retrieved:', {
             rt: rottenTomatoesScore,
             mc: metacriticScore,
             imdb: imdbScore
         });
-        
+
         const scores = {
             rottenTomatoes: rottenTomatoesScore.status === 'fulfilled' ? rottenTomatoesScore.value : null,
             metacritic: metacriticScore.status === 'fulfilled' ? metacriticScore.value : null,
             imdb: imdbScore.status === 'fulfilled' ? imdbScore.value : null
         };
-        
+
         let totalScore = 0;
         let validScores = 0;
-        
+
         if (scores.rottenTomatoes !== null) {
             totalScore += scores.rottenTomatoes;
             validScores++;
         }
-        
+
         if (scores.metacritic !== null) {
             totalScore += scores.metacritic;
             validScores++;
         }
-        
+
         if (scores.imdb !== null) {
             totalScore += scores.imdb * 10;
             validScores++;
         }
-        
+
         const unifiedScore = validScores > 0 ? Math.round(totalScore / validScores) : 0;
-        
+
         if (validScores === 0) {
-            return res.status(404).json({ 
-                error: 'No scores found for this movie. Please try a different title.' 
-            });
+            return {
+                statusCode: 404,
+                headers,
+                body: JSON.stringify({ 
+                    error: 'No scores found for this movie. Please try a different title.' 
+                })
+            };
         }
-        
-        res.json({
-            movieTitle,
-            scores,
-            unifiedScore,
-            validScores,
-            timestamp: new Date().toISOString()
-        });
-        
+
+        return {
+            statusCode: 200,
+            headers,
+            body: JSON.stringify({
+                movieTitle,
+                scores,
+                unifiedScore,
+                validScores,
+                timestamp: new Date().toISOString()
+            })
+        };
+
     } catch (error) {
         console.error('Error processing request:', error);
-        res.status(500).json({ 
-            error: 'Failed to fetch movie scores. Please try again later.' 
-        });
+        return {
+            statusCode: 500,
+            headers,
+            body: JSON.stringify({ 
+                error: 'Failed to fetch movie scores. Please try again later.' 
+            })
+        };
     }
-});
-
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'OK', timestamp: new Date().toISOString() });
-});
-
-// Export the Express app
-module.exports = app;
+};
