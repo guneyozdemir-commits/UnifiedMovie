@@ -78,32 +78,68 @@ async function scrapeRottenTomatoes(movieTitle) {
 // Scrape Metacritic
 async function scrapeMetacritic(movieTitle) {
     try {
-        // Format the movie title for the search URL
-        const searchUrl = `https://www.metacritic.com/search/movie/${encodeURIComponent(movieTitle)}/results`;
-        console.log('Searching Metacritic URL:', searchUrl);
+        // First try the API endpoint
+        const apiUrl = `https://www.metacritic.com/api/v1/search/movie/${encodeURIComponent(movieTitle)}`;
+        console.log('Trying Metacritic API URL:', apiUrl);
+        
+        try {
+            const apiResponse = await axios.get(apiUrl, {
+                headers: {
+                    'User-Agent': getRandomUserAgent(),
+                    'Accept': 'application/json',
+                    'Origin': 'https://www.metacritic.com',
+                    'Referer': 'https://www.metacritic.com/',
+                }
+            });
+            
+            if (apiResponse.data && apiResponse.data.hits && apiResponse.data.hits.length > 0) {
+                const firstHit = apiResponse.data.hits[0];
+                if (firstHit.metaScore && !isNaN(firstHit.metaScore)) {
+                    console.log('Found Metacritic score from API:', firstHit.metaScore);
+                    return parseInt(firstHit.metaScore);
+                }
+            }
+        } catch (apiError) {
+            console.log('API attempt failed, trying fallback method');
+        }
+        
+        // Fallback to web scraping
+        const searchUrl = `https://www.metacritic.com/movie/${encodeURIComponent(movieTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}`;
+        console.log('Trying Metacritic fallback URL:', searchUrl);
         
         const response = await makeRequest(searchUrl);
         const $ = cheerio.load(response.data);
         
-        // Look for the score in search results
-        const scoreElement = $('.c-siteReviewScore');
-        if (scoreElement.length > 0) {
-            const scoreText = scoreElement.first().text().trim();
-            const score = parseInt(scoreText);
-            if (!isNaN(score) && score >= 0 && score <= 100) {
-                console.log('Found Metacritic score:', score);
-                return score;
+        // Try multiple selectors
+        const selectors = [
+            '.ms_wrapper .c-siteReviewScore',
+            '.c-metascore',
+            '.metascore_w',
+            '[data-v-12e11c30]'
+        ];
+        
+        for (const selector of selectors) {
+            const element = $(selector).first();
+            if (element.length) {
+                const scoreText = element.text().trim();
+                const score = parseInt(scoreText);
+                if (!isNaN(score) && score >= 0 && score <= 100) {
+                    console.log('Found Metacritic score from selector:', selector, score);
+                    return score;
+                }
             }
         }
         
-        // Alternative selector
-        const altScoreElement = $('span.metascore_w');
-        if (altScoreElement.length > 0) {
-            const scoreText = altScoreElement.first().text().trim();
-            const score = parseInt(scoreText);
-            if (!isNaN(score) && score >= 0 && score <= 100) {
-                console.log('Found Metacritic score (alt):', score);
-                return score;
+        // Try finding any number between 0-100 in specific sections
+        const relevantSections = $('.c-productHero, .c-productScoreInfo, .ms_wrapper').text();
+        const matches = relevantSections.match(/\b([0-9]{1,2}|100)\b/g);
+        if (matches) {
+            for (const match of matches) {
+                const score = parseInt(match);
+                if (score >= 0 && score <= 100) {
+                    console.log('Found Metacritic score from text:', score);
+                    return score;
+                }
             }
         }
         
