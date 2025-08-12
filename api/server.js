@@ -20,16 +20,13 @@ async function makeRequest(url, retries = 3) {
             const response = await axios.get(url, {
                 headers: {
                     'User-Agent': getRandomUserAgent(),
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                    'Accept': 'text/html',
                     'Accept-Language': 'en-US,en;q=0.5',
-                    'Accept-Encoding': 'gzip, deflate',
-                    'Connection': 'keep-alive',
-                    'Upgrade-Insecure-Requests': '1',
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache'
                 },
                 timeout: 10000
             });
+            // Add a small delay between requests
+            await new Promise(resolve => setTimeout(resolve, 500));
             return response;
         } catch (error) {
             console.error(`Attempt ${i + 1} failed for URL ${url}:`, error.message);
@@ -81,84 +78,36 @@ async function scrapeRottenTomatoes(movieTitle) {
 // Scrape Metacritic
 async function scrapeMetacritic(movieTitle) {
     try {
-        // First try direct movie URL format
-        const formattedTitle = movieTitle.toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/-+/g, '-')
-            .replace(/^-|-$/g, '');
-            
-        const directUrl = `https://www.metacritic.com/movie/${formattedTitle}`;
-        try {
-            const directResponse = await makeRequest(directUrl);
-            const direct$ = cheerio.load(directResponse.data);
-            
-            // Try multiple selector patterns
-            const metascoreSelectors = [
-                '.c-metascore',
-                '.g-inner-rating-value',
-                'span[data-v-12e11c30]',
-                '.metascore_w'
-            ];
-            
-            for (const selector of metascoreSelectors) {
-                const score = direct$(selector).first().text().trim();
-                const parsedScore = parseInt(score);
-                if (!isNaN(parsedScore) && parsedScore >= 0 && parsedScore <= 100) {
-                    console.log(`Found Metacritic score ${parsedScore} for ${movieTitle} using selector ${selector}`);
-                    return parsedScore;
-                }
-            }
-        } catch (error) {
-            console.log(`Direct URL approach failed for ${movieTitle}, trying search...`);
-        }
-
-        // If direct URL fails, try search
-        const searchUrl = `https://www.metacritic.com/search/${encodeURIComponent(movieTitle)}/?category=movie`;
+        // Format the movie title for the search URL
+        const searchUrl = `https://www.metacritic.com/search/movie/${encodeURIComponent(movieTitle)}/results`;
+        console.log('Searching Metacritic URL:', searchUrl);
+        
         const response = await makeRequest(searchUrl);
         const $ = cheerio.load(response.data);
         
-        // Try multiple search result selectors
-        const searchSelectors = [
-            '.c-pageSiteSearch-results-item',
-            '.search_results .result',
-            '[data-v-12e11c30]'
-        ];
-        
-        for (const selector of searchSelectors) {
-            const firstResult = $(selector).first();
-            if (firstResult.length) {
-                const scoreText = firstResult.text();
-                const scoreMatches = scoreText.match(/\b([0-9]{1,3})\b/g);
-                
-                if (scoreMatches) {
-                    for (const match of scoreMatches) {
-                        const score = parseInt(match);
-                        if (score >= 0 && score <= 100) {
-                            console.log(`Found Metacritic score ${score} for ${movieTitle} from search results`);
-                            return score;
-                        }
-                    }
-                }
-                
-                // If we found a result but no score, try to get the movie page URL
-                const movieUrl = firstResult.find('a').attr('href');
-                if (movieUrl) {
-                    const movieResponse = await makeRequest(`https://www.metacritic.com${movieUrl}`);
-                    const movie$ = cheerio.load(movieResponse.data);
-                    
-                    for (const selector of metascoreSelectors) {
-                        const score = movie$(selector).first().text().trim();
-                        const parsedScore = parseInt(score);
-                        if (!isNaN(parsedScore) && parsedScore >= 0 && parsedScore <= 100) {
-                            console.log(`Found Metacritic score ${parsedScore} for ${movieTitle} from movie page`);
-                            return parsedScore;
-                        }
-                    }
-                }
+        // Look for the score in search results
+        const scoreElement = $('.c-siteReviewScore');
+        if (scoreElement.length > 0) {
+            const scoreText = scoreElement.first().text().trim();
+            const score = parseInt(scoreText);
+            if (!isNaN(score) && score >= 0 && score <= 100) {
+                console.log('Found Metacritic score:', score);
+                return score;
             }
         }
         
-        console.log(`No valid Metacritic score found for ${movieTitle}`);
+        // Alternative selector
+        const altScoreElement = $('span.metascore_w');
+        if (altScoreElement.length > 0) {
+            const scoreText = altScoreElement.first().text().trim();
+            const score = parseInt(scoreText);
+            if (!isNaN(score) && score >= 0 && score <= 100) {
+                console.log('Found Metacritic score (alt):', score);
+                return score;
+            }
+        }
+        
+        console.log('No valid Metacritic score found');
         return null;
     } catch (error) {
         console.error('Error scraping Metacritic:', error.message);
@@ -198,7 +147,8 @@ exports.handler = async (event, context) => {
     const headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Content-Type': 'application/json'
     };
 
     // Handle OPTIONS request for CORS
@@ -231,22 +181,20 @@ exports.handler = async (event, context) => {
 
         console.log(`Searching for movie: ${movieTitle}`);
 
-        const [rottenTomatoesScore, metacriticScore, imdbScore] = await Promise.allSettled([
-            scrapeRottenTomatoes(movieTitle),
-            scrapeMetacritic(movieTitle),
-            scrapeIMDb(movieTitle)
-        ]);
-
-        console.log('Scores retrieved:', {
-            rt: rottenTomatoesScore,
-            mc: metacriticScore,
-            imdb: imdbScore
-        });
+        // Execute scraping functions sequentially to avoid rate limiting
+        const rottenTomatoesScore = await scrapeRottenTomatoes(movieTitle);
+        console.log('RT Score:', rottenTomatoesScore);
+        
+        const metacriticScore = await scrapeMetacritic(movieTitle);
+        console.log('MC Score:', metacriticScore);
+        
+        const imdbScore = await scrapeIMDb(movieTitle);
+        console.log('IMDB Score:', imdbScore);
 
         const scores = {
-            rottenTomatoes: rottenTomatoesScore.status === 'fulfilled' ? rottenTomatoesScore.value : null,
-            metacritic: metacriticScore.status === 'fulfilled' ? metacriticScore.value : null,
-            imdb: imdbScore.status === 'fulfilled' ? imdbScore.value : null
+            rottenTomatoes: rottenTomatoesScore,
+            metacritic: metacriticScore,
+            imdb: imdbScore
         };
 
         let totalScore = 0;
@@ -297,7 +245,8 @@ exports.handler = async (event, context) => {
             statusCode: 500,
             headers,
             body: JSON.stringify({ 
-                error: 'Failed to fetch movie scores. Please try again later.' 
+                error: 'Failed to fetch movie scores. Please try again later.',
+                details: error.message
             })
         };
     }
