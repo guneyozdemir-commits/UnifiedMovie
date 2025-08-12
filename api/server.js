@@ -1,7 +1,5 @@
 const express = require('express');
 const cheerio = require('cheerio');
-const chromium = require('chrome-aws-lambda');
-const puppeteerCore = require('puppeteer-core');
 const axios = require('axios');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -12,17 +10,6 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-
-// Initialize browser for each request (Vercel's serverless functions are stateless)
-async function initBrowser() {
-    return puppeteerCore.launch({
-        args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath,
-        headless: true,
-        ignoreHTTPSErrors: true,
-    });
-}
 
 // User agents to avoid being blocked
 const userAgents = [
@@ -59,173 +46,84 @@ async function makeRequest(url, retries = 3) {
     }
 }
 
-// Scrape Rotten Tomatoes using Puppeteer
-async function scrapeRottenTomatoes(movieTitle, browser) {
-    let page;
+// Scrape Rotten Tomatoes
+async function scrapeRottenTomatoes(movieTitle) {
     try {
-        page = await browser.newPage();
-        await page.setUserAgent(getRandomUserAgent());
-        
         const searchUrl = `https://www.rottentomatoes.com/search?search=${encodeURIComponent(movieTitle)}`;
-        await page.goto(searchUrl, { waitUntil: 'networkidle2', timeout: 30000 });
+        const response = await makeRequest(searchUrl);
+        const $ = cheerio.load(response.data);
         
-        let firstResult = null;
-        const searchSelectors = [
-            'search-page-media-row',
-            '[data-qa="search-result"]',
-            'a[href*="/m/"]'
-        ];
+        // Try to find the movie in search results
+        const movieLink = $('search-page-media-row').first();
+        if (!movieLink.length) {
+            return null;
+        }
         
-        for (const selector of searchSelectors) {
-            try {
-                await page.waitForSelector(selector, { timeout: 5000 });
-                firstResult = await page.$(selector);
-                if (firstResult) break;
-            } catch (error) {
-                continue;
+        // Try to get score from search result
+        let score = movieLink.attr('tomatometerscore');
+        if (score && !isNaN(score)) {
+            return parseInt(score);
+        }
+        
+        // If no score in search, try movie page
+        const movieUrl = movieLink.attr('url') || movieLink.find('a[href*="/m/"]').attr('href');
+        if (movieUrl) {
+            const movieResponse = await makeRequest(`https://www.rottentomatoes.com${movieUrl}`);
+            const movie$ = cheerio.load(movieResponse.data);
+            
+            const scoreText = movie$('[data-qa="tomatometer"], .tomatometer, .score').first().text();
+            const match = scoreText.match(/(\d+)%/);
+            if (match) {
+                return parseInt(match[1]);
             }
         }
         
-        if (!firstResult) return null;
-        
-        let score = await firstResult.evaluate(el => {
-            const tomatometerScore = el.getAttribute('tomatometerscore');
-            return tomatometerScore && !isNaN(tomatometerScore) ? parseInt(tomatometerScore) : null;
-        });
-        
-        if (score !== null) return score;
-        
-        const movieUrl = await firstResult.evaluate(el => 
-            el.getAttribute('url') || el.getAttribute('href')
-        );
-        
-        if (movieUrl) {
-            await page.goto(`https://www.rottentomatoes.com${movieUrl}`, { waitUntil: 'networkidle2', timeout: 30000 });
-            await page.waitForSelector('[data-qa="tomatometer"], .tomatometer, .score', { timeout: 10000 });
-            
-            score = await page.evaluate(() => {
-                const selectors = [
-                    '[data-qa="tomatometer"]',
-                    '.tomatometer .percentage',
-                    '.score .percentage',
-                    '.tomatometer',
-                    '.score'
-                ];
-                
-                for (const selector of selectors) {
-                    const element = document.querySelector(selector);
-                    if (element) {
-                        const match = element.textContent.trim().match(/(\d+)%/);
-                        if (match) return parseInt(match[1]);
-                    }
-                }
-                return null;
-            });
-        }
-        
-        return score;
+        return null;
     } catch (error) {
         console.error('Error scraping Rotten Tomatoes:', error.message);
         return null;
-    } finally {
-        if (page) await page.close();
     }
 }
 
-// Scrape Metacritic using Puppeteer
-async function scrapeMetacritic(movieTitle, browser) {
-    let page;
+// Scrape Metacritic
+async function scrapeMetacritic(movieTitle) {
     try {
-        page = await browser.newPage();
-        await page.setUserAgent(getRandomUserAgent());
-        
         const searchUrl = `https://www.metacritic.com/search/${encodeURIComponent(movieTitle)}`;
-        await page.goto(searchUrl, { waitUntil: 'networkidle2', timeout: 30000 });
+        const response = await makeRequest(searchUrl);
+        const $ = cheerio.load(response.data);
         
-        let firstResult = null;
-        const searchSelectors = [
-            '.c-pageSiteSearch-results-item',
-            'a[href*="/movie/"]',
-            '.search-result',
-            '.result'
-        ];
-        
-        for (const selector of searchSelectors) {
-            try {
-                await page.waitForSelector(selector, { timeout: 5000 });
-                firstResult = await page.$(selector);
-                if (firstResult) break;
-            } catch (error) {
-                continue;
-            }
-        }
-        
-        if (!firstResult) return null;
-        
-        let score = await firstResult.evaluate(el => {
-            const text = el.textContent;
-            const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-            
-            if (lines.length > 0) {
-                const lastLine = lines[lines.length - 1];
-                const scoreMatch = lastLine.match(/^(\d{1,2}|100)$/);
-                if (scoreMatch) {
-                    const potentialScore = parseInt(scoreMatch[1]);
-                    if (potentialScore >= 0 && potentialScore <= 100) return potentialScore;
-                }
-            }
-            
-            const allNumbers = text.match(/(\d{1,2}|100)/g);
-            if (allNumbers) {
-                const potentialScores = allNumbers
-                    .map(n => parseInt(n))
-                    .filter(n => n >= 0 && n <= 100 && n !== 2010 && n !== 2008 && n !== 2012);
-                if (potentialScores.length > 0) return Math.max(...potentialScores);
-            }
-            
+        const firstResult = $('.c-pageSiteSearch-results-item').first();
+        if (!firstResult.length) {
             return null;
-        });
-        
-        if (score !== null) return score;
-        
-        const movieUrl = await firstResult.evaluate(el => {
-            if (el.tagName === 'A') return el.getAttribute('href');
-            const link = el.querySelector('a');
-            return link ? link.getAttribute('href') : null;
-        });
-        
-        if (movieUrl) {
-            await page.goto(`https://www.metacritic.com${movieUrl}`, { waitUntil: 'networkidle2', timeout: 30000 });
-            await page.waitForSelector('.metascore_w.larger.movie, .metascore, .score', { timeout: 10000 });
-            
-            score = await page.evaluate(() => {
-                const selectors = [
-                    '.metascore_w.larger.movie',
-                    '.metascore_w',
-                    '.metascore',
-                    '.score'
-                ];
-                
-                for (const selector of selectors) {
-                    const element = document.querySelector(selector);
-                    if (element) {
-                        const match = element.textContent.trim().match(/(\d+)/);
-                        if (match) {
-                            const score = parseInt(match[1]);
-                            if (score >= 0 && score <= 100) return score;
-                        }
-                    }
-                }
-                return null;
-            });
         }
         
-        return score;
+        // Try to get score from search result
+        const scoreText = firstResult.text();
+        const scoreMatch = scoreText.match(/(\d{1,2}|100)/);
+        if (scoreMatch) {
+            const score = parseInt(scoreMatch[1]);
+            if (score >= 0 && score <= 100) {
+                return score;
+            }
+        }
+        
+        // If no score in search, try movie page
+        const movieUrl = firstResult.find('a').attr('href');
+        if (movieUrl) {
+            const movieResponse = await makeRequest(`https://www.metacritic.com${movieUrl}`);
+            const movie$ = cheerio.load(movieResponse.data);
+            
+            const metaScore = movie$('.metascore_w').first().text().trim();
+            const score = parseInt(metaScore);
+            if (!isNaN(score) && score >= 0 && score <= 100) {
+                return score;
+            }
+        }
+        
+        return null;
     } catch (error) {
         console.error('Error scraping Metacritic:', error.message);
         return null;
-    } finally {
-        if (page) await page.close();
     }
 }
 
@@ -257,20 +155,25 @@ async function scrapeIMDb(movieTitle) {
 
 // Main API endpoint
 app.get('/api/movie/:title', async (req, res) => {
-    let browser;
     try {
         const movieTitle = req.params.title;
         if (!movieTitle) {
             return res.status(400).json({ error: 'Movie title is required' });
         }
         
-        browser = await initBrowser();
+        console.log(`Searching for movie: ${movieTitle}`);
         
         const [rottenTomatoesScore, metacriticScore, imdbScore] = await Promise.allSettled([
-            scrapeRottenTomatoes(movieTitle, browser),
-            scrapeMetacritic(movieTitle, browser),
+            scrapeRottenTomatoes(movieTitle),
+            scrapeMetacritic(movieTitle),
             scrapeIMDb(movieTitle)
         ]);
+        
+        console.log('Scores retrieved:', {
+            rt: rottenTomatoesScore,
+            mc: metacriticScore,
+            imdb: imdbScore
+        });
         
         const scores = {
             rottenTomatoes: rottenTomatoesScore.status === 'fulfilled' ? rottenTomatoesScore.value : null,
@@ -317,8 +220,6 @@ app.get('/api/movie/:title', async (req, res) => {
         res.status(500).json({ 
             error: 'Failed to fetch movie scores. Please try again later.' 
         });
-    } finally {
-        if (browser) await browser.close();
     }
 });
 
