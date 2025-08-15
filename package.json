@@ -2,9 +2,9 @@
   "name": "unified-movie-score",
   "version": "1.0.0",
   "description": "A web app that unifies movie scores from different rating platforms",
-  "main": "api/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node api/server.js",
+    "start": "node server.js",
     "build": "echo 'No build step required'"
   },
   "dependencies": {

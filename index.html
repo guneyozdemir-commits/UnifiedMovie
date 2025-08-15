@@ -2,169 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unified Movie Score</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Custom Dune Rise font -->
     <style>
         @font-face {
             font-family: 'Dune Rise';
             src: url('fonts/DuneRise.woff2') format('woff2');
-            font-weight: 300 700;
+            font-weight: normal;
             font-display: swap;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1 class="title">
-                Unified Movie Score
-            </h1>
-            <p class="subtitle">Get a comprehensive rating from Rotten Tomatoes, Metacritic, and IMDb</p>
-        </header>
+        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <svg class="sun-icon" viewBox="0 0 24 24">
+                <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-2c.28 0 .5-.22.5-.5v-3c0-.28-.22-.5-.5-.5s-.5.22-.5.5v3c0 .28.22.5.5.5zm0 13c-.28 0-.5.22-.5.5v3c0 .28.22.5.5.5s.5-.22.5-.5v-3c0-.28-.22-.5-.5-.5zm8.5-6.5c0-.28-.22-.5-.5-.5h-3c-.28 0-.5.22-.5.5s.22.5.5.5h3c.28 0 .5-.22.5-.5zM7 12c0-.28-.22-.5-.5-.5h-3c-.28 0-.5.22-.5.5s.22.5.5.5h3c.28 0 .5-.22.5-.5zm8.85-7.35c-.2-.2-.51-.2-.71 0l-2.12 2.12c-.2.2-.2.51 0 .71.2.2.51.2.71 0l2.12-2.12c.2-.2.2-.51 0-.71zm-9.9 9.9c-.2-.2-.51-.2-.71 0l-2.12 2.12c-.2.2-.2.51 0 .71.2.2.51.2.71 0l2.12-2.12c.2-.2.2-.51 0-.71zm9.9 0c-.2-.2-.51-.2-.71 0l-2.12 2.12c-.2.2-.2.51 0 .71.2.2.51.2.71 0l2.12-2.12c.2-.2.2-.51 0-.71zm-9.9-9.9c-.2-.2-.51-.2-.71 0l-2.12 2.12c-.2.2-.2.51 0 .71.2.2.51.2.71 0l2.12-2.12c.2-.2.2-.51 0-.71z"/>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24">
+                <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+            </svg>
+        </button>
+        <h1 class="title">Unified Movie Score</h1>
 
-        <main class="main">
-            <div class="search-section">
-                <div class="search-container">
-                    <input 
-                        type="text" 
-                        id="movieInput" 
-                        class="search-input" 
-                        placeholder="Enter a movie title..."
-                        autocomplete="off"
-                    >
-                    <button id="searchBtn" class="search-button">
-                        <i class="fas fa-search"></i>
-                        Search
-                    </button>
+        <div class="search-section">
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <input type="text" id="movieInput" placeholder="Search for a movie..." autocomplete="off">
+                    <div id="suggestions" class="suggestions-dropdown"></div>
+                </div>
+                <button id="searchBtn">Search</button>
+            </div>
+        </div>
+
+        <div class="top-movies">
+            <div class="top-movies-scroll">
+                <button class="top-movie" data-movie="The Godfather">
+                    <span class="top-movie-score">96</span>
+                    <span class="top-movie-title">The Godfather</span>
+                </button>
+                <button class="top-movie" data-movie="12 Angry Men">
+                    <span class="top-movie-score">96</span>
+                    <span class="top-movie-title">12 Angry Men</span>
+                </button>
+                <button class="top-movie" data-movie="Seven Samurai">
+                    <span class="top-movie-score">95</span>
+                    <span class="top-movie-title">Seven Samurai</span>
+                </button>
+                <button class="top-movie" data-movie="Casablanca">
+                    <span class="top-movie-score">95</span>
+                    <span class="top-movie-title">Casablanca</span>
+                </button>
+                <button class="top-movie" data-movie="Rear Window">
+                    <span class="top-movie-score">95</span>
+                    <span class="top-movie-title">Rear Window</span>
+                </button>
+                <button class="top-movie" data-movie="Schindler's List">
+                    <span class="top-movie-score">94</span>
+                    <span class="top-movie-title">Schindler's List</span>
+                </button>
+                <button class="top-movie" data-movie="Parasite">
+                    <span class="top-movie-score">94</span>
+                    <span class="top-movie-title">Parasite</span>
+                </button>
+                <button class="top-movie" data-movie="Singin' in the Rain">
+                    <span class="top-movie-score">94</span>
+                    <span class="top-movie-title">Singin' in the Rain</span>
+                </button>
+                <button class="top-movie" data-movie="Citizen Kane">
+                    <span class="top-movie-score">94</span>
+                    <span class="top-movie-title">Citizen Kane</span>
+                </button>
+                <button class="top-movie" data-movie="The Lord of the Rings: The Return of the King">
+                    <span class="top-movie-score">93</span>
+                    <span class="top-movie-title">The Lord of the Rings: The Return of the King</span>
+                </button>
+            </div>
+        </div>
+
+        <button id="predictButton" class="predict-button" aria-label="Predict a movie score">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M7 10l5 5 5-5z"/>
+            </svg>
+        </button>
+        <div id="prediction" class="prediction-section">
+            <p class="predict-section-title">Guess The Score</p>
+            <p id="predictMovieTitle" class="predict-movie-title"></p>
+            <input type="number" id="predictScore" class="predict-input" min="0" max="100" placeholder="Prediction (0-100)">
+            <button id="submitPrediction" class="predict-submit">Submit</button>
+            <p id="predictionResult" class="predict-result"></p>
+        </div>
+
+        <div class="loading">Loading...</div>
+        <div class="error-message"></div>
+
+        <div class="results-section">
+            <h2 class="movie-title"></h2>
+            <div class="scores">
+                <div class="score-card">
+                    <span class="score-value" id="rottenTomatoesScore">-</span>
+                    <span class="score-label">Rotten Tomatoes</span>
+                </div>
+                <div class="score-card">
+                    <span class="score-value" id="metacriticScore">-</span>
+                    <span class="score-label">Metacritic</span>
+                </div>
+                <div class="score-card">
+                    <span class="score-value" id="imdbScore">-</span>
+                    <span class="score-label">IMDb</span>
                 </div>
             </div>
-
-            <div class="top-movies">
-                <div class="top-movies-scroll">
-                    <button class="top-movie" data-movie="The Godfather">
-                        <span class="top-movie-score">96</span>
-                        <span class="top-movie-title">The Godfather</span>
-                    </button>
-                    <button class="top-movie" data-movie="12 Angry Men">
-                        <span class="top-movie-score">96</span>
-                        <span class="top-movie-title">12 Angry Men</span>
-                    </button>
-                    <button class="top-movie" data-movie="Seven Samurai">
-                        <span class="top-movie-score">95</span>
-                        <span class="top-movie-title">Seven Samurai</span>
-                    </button>
-                    <button class="top-movie" data-movie="Casablanca">
-                        <span class="top-movie-score">95</span>
-                        <span class="top-movie-title">Casablanca</span>
-                    </button>
-                    <button class="top-movie" data-movie="Rear Window">
-                        <span class="top-movie-score">95</span>
-                        <span class="top-movie-title">Rear Window</span>
-                    </button>
-                    <button class="top-movie" data-movie="Schindler's List">
-                        <span class="top-movie-score">94</span>
-                        <span class="top-movie-title">Schindler's List</span>
-                    </button>
-                    <button class="top-movie" data-movie="Parasite">
-                        <span class="top-movie-score">94</span>
-                        <span class="top-movie-title">Parasite</span>
-                    </button>
-                    <button class="top-movie" data-movie="Singin' in the Rain">
-                        <span class="top-movie-score">94</span>
-                        <span class="top-movie-title">Singin' in the Rain</span>
-                    </button>
-                    <button class="top-movie" data-movie="Citizen Kane">
-                        <span class="top-movie-score">94</span>
-                        <span class="top-movie-title">Citizen Kane</span>
-                    </button>
-                    <button class="top-movie" data-movie="Gone with the Wind">
-                        <span class="top-movie-score">94</span>
-                        <span class="top-movie-title">Gone with the Wind</span>
-                    </button>
-                </div>
+            <div class="unified-score">
+                <div class="unified-score-value" id="unifiedScore">-</div>
+                <div class="unified-score-label">Unified Score</div>
             </div>
-
-            <div id="loadingSpinner" class="loading-spinner hidden">
-                <div class="spinner"></div>
-                <p>Searching for movie scores...</p>
-            </div>
-
-            <div id="resultsSection" class="results-section hidden">
-                <div class="movie-info">
-                    <h2 id="movieTitle" class="movie-title"></h2>
-                    <div class="unified-score">
-                        <div class="score-circle">
-                            <span id="unifiedScore" class="score-number">0</span>
-                            <span class="score-label">Unified Score</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="scores-grid">
-                    <div class="score-card">
-                        <div class="score-header">
-                            <i class="fas fa-tomato"></i>
-                            <h3>Rotten Tomatoes</h3>
-                        </div>
-                        <div class="score-value" id="rtScore">-</div>
-                        <div class="score-source">Critic Score</div>
-                    </div>
-
-                    <div class="score-card">
-                        <div class="score-header">
-                            <i class="fas fa-star"></i>
-                            <h3>Metacritic</h3>
-                        </div>
-                        <div class="score-value" id="metacriticScore">-</div>
-                        <div class="score-source">Metascore</div>
-                    </div>
-
-                    <div class="score-card">
-                        <div class="score-header">
-                            <i class="fas fa-imdb"></i>
-                            <h3>IMDb</h3>
-                        </div>
-                        <div class="score-value" id="imdbScore">-</div>
-                        <div class="score-source">User Rating</div>
-                    </div>
-                </div>
-
-                <div class="score-breakdown">
-                    <h3>Score Breakdown</h3>
-                    <div class="breakdown-item">
-                        <span>Rotten Tomatoes:</span>
-                        <span id="rtBreakdown">-</span>
-                    </div>
-                    <div class="breakdown-item">
-                        <span>Metacritic:</span>
-                        <span id="metacriticBreakdown">-</span>
-                    </div>
-                    <div class="breakdown-item">
-                        <span>IMDb:</span>
-                        <span id="imdbBreakdown">-</span>
-                    </div>
-                    <div class="breakdown-item total">
-                        <span>Total:</span>
-                        <span id="totalBreakdown">-</span>
-                    </div>
-                </div>
-            </div>
-
-            <div id="errorSection" class="error-section hidden">
-                <div class="error-icon">
-                    <i class="fas fa-exclamation-triangle"></i>
-                </div>
-                <h3>Movie Not Found</h3>
-                <p id="errorMessage">We couldn't find scores for that movie. Please try a different title.</p>
-            </div>
-        </main>
-
-        <footer class="footer">
-            <p>Data aggregated from Rotten Tomatoes, Metacritic, and IMDb</p>
-        </footer>
+        </div>
     </div>
 
     <script src="script.js"></script>
